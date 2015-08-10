@@ -1,11 +1,21 @@
 
 #Log4j 1.x  #
 
-##Log4j的三大组件：  ##
-	1. Loggers 日志写出器
-	2. Appenders 日志目的地
-	3. Layouts 日志格式化
+##Log4j简介 ##
+	Log4j是一种分层结构：
+		最顶层： 捕获log信息			
+		中间层：分析和验证log信息	
+		最底层：格式化生成log信息
 
+##Log4j的三大组件：  ##
+	1. Loggers 日志写出器，捕获log信息
+	2. Appenders 日志目的地，将log信息输出到不同的目的地
+	3. Layouts 日志格式化，格式化log信息
+##Log4j其他重要组件：##
+	1. Level: 老版本中称之为Priority，用于定义log信息的级别。每一条log信息都拥有一个合适的Level。Log4j中定义了7种Level，分别是：OFF，DEBUG，INFO，ERROR，WARN，FATAL，ALL。每种Level都对应一个整型数值。Level之间的优先关系为：ALL<DEBUG<INFO<WARN<ERROR<FATAL<OFF。
+	2. Filter：用于分析log信息并决定哪些信息将被输出。Filter附属于Appender存在，并且一个Appender对象可以绑定多个Filter。
+	3. ObjectRender：使用相应的字符串来表示传递给Log4j的（自定义）对象（例：toString()），附属于Layout。
+	4. LogManager：负责管理整个框架。包括读取初始化参数，Logger对象的创建。
 ## 1 Loggers ##
 ### 1.1 Loggers级别设置 ###
 	在org.apache.log4j.Level中定义了以下级别
