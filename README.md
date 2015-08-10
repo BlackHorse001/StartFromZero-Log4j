@@ -16,6 +16,9 @@
 	2. Filter：用于分析log信息并决定哪些信息将被输出。Filter附属于Appender存在，并且一个Appender对象可以绑定多个Filter。
 	3. ObjectRender：使用相应的字符串来表示传递给Log4j的（自定义）对象（例：toString()），附属于Layout。
 	4. LogManager：负责管理整个框架。包括读取初始化参数，Logger对象的创建。
+	
+	![各组件间作用时序图](https://github.com/BlackHorse001/StartFromZero-Log4j/raw/master/Log4j/src/main/resources/images/interaction.png)
+
 ## 1 Loggers ##
 ### 1.1 Loggers级别设置 ###
 	在org.apache.log4j.Level中定义了以下级别
