@@ -17,7 +17,7 @@
 	3. ObjectRender：使用相应的字符串来表示传递给Log4j的（自定义）对象（例：toString()），附属于Layout。
 	4. LogManager：负责管理整个框架。包括读取初始化参数，Logger对象的创建。
 	
-	![各组件间作用时序图](https://github.com/BlackHorse001/StartFromZero-Log4j/row/master/Log4j/src/main/resources/images/interaction.png)
+	![image](https://github.com/BlackHorse001/StartFromZero-Log4j/row/master/Log4j/src/main/resources/images/interaction.png)
 
 ## 1 Loggers ##
 ### 1.1 Loggers级别设置 ###
