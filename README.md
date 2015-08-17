@@ -18,7 +18,21 @@
 	4. LogManager：负责管理整个框架。包括读取初始化参数，Logger对象的创建。
 	
 	![各组件间作用时序图](https://github.com/BlackHorse001/StartFromZero-Log4j/raw/master/Log4j/src/main/resources/images/interaction.png)
-
+	
+##Log4j初始化##
+###默认初始化过程###
+	LogManager通过静态代码块加载配置参数，生成Logger单实例对象。过程如下：
+		- LogManager 查找系统属性log4j.configuration（可以自定义参数文件路径）
+		- 如果没有定义log4j.configuration，则在当前ClassPath中查找log4j.properties/log4j.xml
+		- 将参数信息字符串转化为java.net.URL对象
+		- 如果没有找到配置参数，初始化过程将会终止
+		- 如果找到配置文件，根据文件格式，使用对应的org.apache.log4j.PropertyConfigurator/org.apache.log4j.xml.DOMConfigurator解析.properities/.xml格式配置文件，生成Logger对象
+	Log4j支持自定义初始化器（如：LogManager）以及自定义配置文件解析器（如：PropertyConfigurator），自定义配置文件解析类应当实现org.apache.log4j.spi.Configurator接口，并且在程序启动时通过log4j.configurationClas指定自定义解析器
+###通过 VM参数初始化###
+	Log4j在初始化过程中支持3个VM参数：
+		- log4j.configuration：指定配置文件
+		- log4j.configurationClass：指定自定义初始化类代替LogManager。通过log4j:defaultInitOverride启用（禁用）默认初始化流程
+		
 ## 1 Loggers ##
 ### 1.1 Loggers级别设置 ###
 	在org.apache.log4j.Level中定义了以下级别
@@ -56,7 +70,10 @@
 	Layouts用于格式化输出。
 
 ## 4 参数配置 ##
-	Log4j通过参数文件来配置Logger，Appender，Layout的基本信息。主要有xml和properties两种文件格式。
+	Log4j通过参数文件来配置Logger，Appender，Layout的基本信息。支持.properities, .xml以及程序三种方式来进行相关设置。但：
+		- Log4j 配置是大小写敏感的
+		- 某些Appender组件，比如：AsyncAppender只能通过xml形式配置
+		- 某些高级组件，比如：Filter，ObjectRenderer只能通过xml形式配置
 ### 4.1 配置文件的基本组成元素 ###
 #### 4.1.1 Logger的配置 ####
 	- level：fatal，error，warn，info，debug
