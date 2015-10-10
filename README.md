@@ -88,8 +88,9 @@ Log4j通过参数文件来配置Logger，Appender，Layout的基本信息。支�
 	-  org.apache.log4j.RollingFileAppender 文件大小达到指定大小生成新文件
 	-  org.apache.log4j.WriterAppender 以流的形式输出到任何地方
 - param：param1，param2...
-- layout：见下面layout配置
-#### 4.1.3 Layout的配置 ####
+- layout：见下面layout配置 
+
+#### 4.1.3 Layout的配置 #### 
 - class：Layout的全限定类名，Log4j提供的Layout有以下几种：
 	- org.apache.log4j.HTMLLayout 以HTML表格形式布局
 	- org.apache.log4j.PatternLayout 根据Pattern灵活地指定布局模式
