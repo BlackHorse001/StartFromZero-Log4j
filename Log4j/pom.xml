@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.study</groupId>
-	<artifactId>log4j</artifactId>
+	<artifactId>Log4j</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>log4j</name>
+	<name>Log4j</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
